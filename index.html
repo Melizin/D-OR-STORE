@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D'OR STORE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to top left, #000, #222);
+      font-family: 'Arial Black', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex: 1;
+      padding-bottom: 40px;
+    }
+
+    .content1 {
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .title {
+      color: white;
+      font-size: 36px;
+    }
+
+    .card {
+      width: 190px;
+      background: #171717;
+      box-shadow: 0px 0px 8px 2px #00000088;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      margin-left: 60px; /* agora mais à esquerda */
+      margin-top: 20px;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card .info {
+      padding: 10px;
+    }
+
+    .card .info h3 {
+      font-size: 16px;
+      color: gold;
+    }
+
+    .card .info p {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .card .info .price {
+      color: #00ff88;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .modal-content h2 {
+      margin-top: 15px;
+      font-size: 24px;
+    }
+
+    .modal-content .price {
+      color: #00ff88;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .modal-content p {
+      color: #ccc;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background: #e1306c;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .insta-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #E1306C;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .insta-btn img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-content">
+    <div class="content1">
+      <h1 class="title">D'OR STORE</h1>
+    </div>
+
+    <!-- Card mais à esquerda -->
+    <div class="card" id="productCard">
+      <img src="./img/img.png" alt="Corrente King's Cross">
+      <div class="info">
+        <h3>👑 KING'S CROSS ✝️</h3>
+        <p>Estilo, fé e presença numa só peça.</p>
+        <p class="price">R$ 20</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <img src="./img/img.png" alt="Corrente King's Cross">
+      <h2>👑 KING'S CROSS ✝️</h2>
+      <div class="price">R$ 20</div>
+      <p>Corrente reforçada + pingente detalhado = visual insano.</p>
+      <button onclick="window.open('https://www.instagram.com/direct/t/17843055036533498', '_blank')">Comprar</button>
+    </div>
+  </div>
+
+  <!-- Rodapé simplificado -->
+  <footer>
+    <div class="footer-bottom">
+      <p>💎 <strong>Joias que falam por você</strong><br />
+        📍 Envios para todo Brasil<br />
+        📦 Garantia de Qualidade<br />
+        💌 Chama no direct pra orçamentos
+      </p>
+
+      <a class="insta-btn" href="https://www.instagram.com/d.or_store/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        @d.or_store
+      </a>
+
+      <p style="margin-top: 10px;">Site criado por <strong>Zion</strong></p>
+    </div>
+  </footer>
+
+  <script>
+    const card = document.getElementById('productCard');
+    const modal = document.getElementById('modal');
+
+    card.addEventListener('click', () => {
+      modal.classList.add('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
