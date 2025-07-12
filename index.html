@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D'OR STORE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to top left, #000, #222);
+      font-family: 'Arial Black', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex: 1;
+      padding-bottom: 40px;
+    }
+
+    .content1 {
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .title {
+      color: white;
+      font-size: 36px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-left: 60px;
+    }
+
+    .card {
+      width: 190px;
+      background: #171717;
+      box-shadow: 0px 0px 8px 2px #00000088;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card .info {
+      padding: 10px;
+    }
+
+    .card .info h3 {
+      font-size: 16px;
+      color: gold;
+    }
+
+    .card .info p {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .card .info .price {
+      color: #00ff88;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .modal-content h2 {
+      margin-top: 15px;
+      font-size: 24px;
+    }
+
+    .modal-content .price {
+      color: #00ff88;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .modal-content p {
+      color: #ccc;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background: #e1306c;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .insta-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #E1306C;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .insta-btn img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-content">
+    <div class="content1">
+      <h1 class="title">D'OR STORE</h1>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards-container">
+      <!-- Card 1 -->
+      <div class="card" onclick="openModal('modal1')">
+        <img src="./img/corrente.png" alt="Corrente King's Cross">
+        <div class="info">
+          <h3>👑 KING'S CROSS ✝️</h3>
+          <p>Estilo, fé e presença numa só peça.</p>
+          <p class="price">R$ 20</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" onclick="openModal('modal2')">
+        <img src="./img/coracao.png" alt="Coração de Judas">
+        <div class="info">
+          <h3>💔 Coração de Judas</h3>
+          <p>Corrente com pingente cravejado: 4 vermelhos e 1 preto no centro. Um símbolo de força, atitude e estilo.<br>D’OR Store domina.</p>
+          <p class="price">💲R$:40</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" onclick="openModal('modal3')">
+        <img src="./img/noite.png" alt="Noite Sagrada">
+        <div class="info">
+          <h3>🎥💀 NOITE SAGRADA</h3>
+          <p>Não é só uma corrente…<br>
+            É a escuridão com classe no seu pescoço.<br>
+            Com cruz pesada e toque sombrio.<br>
+            Pra quem anda na fé, mas no estilo também ⚔️🖤
+          </p>
+          <p class="price">R$40</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1 -->
+  <div class="modal" id="modal1" onclick="closeModal(event, 'modal1')">
+    <div class="modal-content">
+      <img src="./img/corrente.png" alt="Corrente King's Cross">
+      <h2>👑 KING'S CROSS ✝️</h2>
+      <div class="price">R$ 20</div>
+      <p>Corrente reforçada + pingente detalhado = visual insano.</p>
+      <button onclick="window.open('https://www.instagram.com/direct/t/17843055036533498', '_blank')">Comprar no Instagram</button>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal" id="modal2" onclick="closeModal(event, 'modal2')">
+    <div class="modal-content">
+      <img src="./img/coracao.png" alt="Coração de Judas">
+      <h2>💔 Coração de Judas</h2>
+      <div class="price">R$ 40</div>
+      <p>Corrente com pingente cravejado: 4 vermelhos e 1 preto no centro. Um símbolo de força, atitude e estilo.<br>D’OR Store domina.</p>
+      <button onclick="window.open('https://www.instagram.com/direct/t/17843055036533498', '_blank')">Comprar no Instagram</button>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal" id="modal3" onclick="closeModal(event, 'modal3')">
+    <div class="modal-content">
+      <img src="./img/noite.png" alt="Noite Sagrada">
+      <h2>🎥💀 NOITE SAGRADA</h2>
+      <div class="price">R$ 40</div>
+      <p>Não é só uma corrente…<br>
+        É a escuridão com classe no seu pescoço.<br>
+        Com cruz pesada e toque sombrio.<br>
+        Pra quem anda na fé, mas no estilo também ⚔️🖤
+      </p>
+      <button onclick="window.open('https://www.instagram.com/direct/t/17843055036533498', '_blank')">Comprar no Instagram</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-bottom">
+      <p>💎 <strong>Joias que falam por você</strong><br />
+        📍 Envios para todo Brasil<br />
+        📦 Garantia de Qualidade<br />
+        💌 Chama no direct pra orçamentos
+      </p>
+
+      <a class="insta-btn" href="https://www.instagram.com/d.or_store/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        @d.or_store
+      </a>
+
+      <p style="margin-top: 10px;">Site criado por <strong>Zion</strong></p>
+    </div>
+  </footer>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(event, id) {
+      if (event.target.id === id) {
+        document.getElementById(id).classList.remove('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
